@@ -21,6 +21,7 @@ exports.author_create = (req, res, next) => {
 
 exports.author_get_all = (req, res, next) => {
     Author.find()
+        .select('name _id nationality')
         .exec()
         .then(docs => {
             console.log(docs);
