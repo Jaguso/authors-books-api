@@ -1,18 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-
-router.get('/', (req, res, next) => {
-    res.status(200).json({
-        message: 'get all authors'
-    });
-});
+const AuthorsController = require('../controllers/authors');
 
 
-router.post('/', (req, res, next) => {
-    res.status(201).json({
-        message: 'Create an author'
-    });
-});
+router.get('/', AuthorsController.author_get_all);
+router.post('/', AuthorsController.author_create);
 
 module.exports = router;
