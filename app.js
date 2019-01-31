@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const authorRoutes = require('./api/routes/authors');
 const bookRoutes = require('./api/routes/books');
 
+const cors = require('cors');
+
 mongoose.connect(
     'mongodb://author:' + 
     process.env.MONGO_ATLAS_PW + 
@@ -27,7 +29,6 @@ app.use('/books', bookRoutes);
 
 
 
-
 app.use((req, res, next) => {
     const error = new Error('Not found');
     error.status = 404;
@@ -43,4 +44,5 @@ app.use((error, req, res, next) => {
     });
 });
 
+app.use(cors());
 module.exports = app;
