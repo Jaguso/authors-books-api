@@ -9,6 +9,8 @@ const bookRoutes = require('./api/routes/books');
 
 const cors = require('cors');
 
+app.use(cors());
+
 mongoose.connect(
     'mongodb://author:' + 
     process.env.MONGO_ATLAS_PW + 
@@ -44,5 +46,4 @@ app.use((error, req, res, next) => {
     });
 });
 
-app.use(cors());
 module.exports = app;
